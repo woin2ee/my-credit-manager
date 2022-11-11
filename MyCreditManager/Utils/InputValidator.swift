@@ -22,7 +22,7 @@ struct InputValidator {
         }
     }
     
-    func validateSubjectInfoForm(forInput input: String) -> Result<(name: String, subjectTitle: String, grade: String), Error> {
+    func validateUpdateGradeInputForm(forInput input: String) -> Result<(name: String, subjectTitle: String, grade: String), Error> {
         let inputs = input.components(separatedBy: " ")
         guard inputs.count == 3,
               Grade(inputs[2]) != nil
@@ -32,5 +32,16 @@ struct InputValidator {
         }
         
         return .success((name: inputs[0], subjectTitle: inputs[1], grade: inputs[2]))
+    }
+    
+    func validateDeleteGradeInputForm(forInput input: String) -> Result<(name: String, subjectTitle: String), Error> {
+        let inputs = input.components(separatedBy: " ")
+        guard inputs.count == 2
+        else {
+            print("입력이 잘못되었습니다. 다시 확인해주세요.")
+            return .failure(ValidationError.invalidInputForm)
+        }
+        
+        return .success((name: inputs[0], subjectTitle: inputs[1]))
     }
 }

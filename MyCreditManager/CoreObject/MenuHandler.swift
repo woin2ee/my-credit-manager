@@ -74,7 +74,7 @@ final class MenuHandler {
               inputValidator.validateEmpty(forInput: input)
         else { return }
         
-        guard let info = try? inputValidator.validateSubjectInfoForm(forInput: input).get() else { return }
+        guard let info = try? inputValidator.validateUpdateGradeInputForm(forInput: input).get() else { return }
         
         if var targetStudent = students.filter({ $0.name == info.name }).first {
             let subject: Subject = .init(title: info.subjectTitle, grade: info.grade)
@@ -87,7 +87,26 @@ final class MenuHandler {
     }
     
     private func deleteGrade() {
+        print("성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.")
+        print("입력예) Mickey Swift")
         
+        guard let input = readLine(),
+              inputValidator.validateEmpty(forInput: input)
+        else { return }
+        
+        guard let info = try? inputValidator.validateDeleteGradeInputForm(forInput: input).get() else { return }
+        
+        guard var targetStudent = students.filter({ $0.name == info.name }).first else {
+            return print("\(info.name) 학생을 찾지 못했습니다.")
+        }
+        
+        guard let targetSubject = targetStudent.subjects.filter({ $0.title == info.subjectTitle }).first else {
+            return print("\(info.name) 학생의 \(info.subjectTitle) 과목을 찾지 못했습니다.")
+        }
+        
+        targetStudent.subjects.remove(targetSubject)
+        students.update(with: targetStudent)
+        print("\(info.name) 학생의 \(info.subjectTitle) 과목의 성적이 삭제되었습니다.")
     }
     
     private func showTotalGrade() {
