@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		DA0A8831291E750600E9AE43 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A8830291E750600E9AE43 /* main.swift */; };
+		DA0A8839291E757F00E9AE43 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A8838291E757F00E9AE43 /* Student.swift */; };
+		DA0A883D291E75DD00E9AE43 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A883C291E75DD00E9AE43 /* InputValidator.swift */; };
+		DA0A883F291E769B00E9AE43 /* MenuReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A883E291E769B00E9AE43 /* MenuReceiver.swift */; };
+		DA0A8841291E771200E9AE43 /* CreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A8840291E771200E9AE43 /* CreditManager.swift */; };
+		DA0A8843291E783B00E9AE43 /* MenuHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A8842291E783B00E9AE43 /* MenuHandler.swift */; };
+		DA0A8846291E796B00E9AE43 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A8845291E796B00E9AE43 /* Subject.swift */; };
+		DA0A8848291E79E800E9AE43 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A8847291E79E800E9AE43 /* Grade.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +32,13 @@
 /* Begin PBXFileReference section */
 		DA0A882D291E750600E9AE43 /* MyCreditManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MyCreditManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA0A8830291E750600E9AE43 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		DA0A8838291E757F00E9AE43 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		DA0A883C291E75DD00E9AE43 /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
+		DA0A883E291E769B00E9AE43 /* MenuReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuReceiver.swift; sourceTree = "<group>"; };
+		DA0A8840291E771200E9AE43 /* CreditManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditManager.swift; sourceTree = "<group>"; };
+		DA0A8842291E783B00E9AE43 /* MenuHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHandler.swift; sourceTree = "<group>"; };
+		DA0A8845291E796B00E9AE43 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		DA0A8847291E79E800E9AE43 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +71,48 @@
 		DA0A882F291E750600E9AE43 /* MyCreditManager */ = {
 			isa = PBXGroup;
 			children = (
-				DA0A8830291E750600E9AE43 /* main.swift */,
+				DA0A883A291E759900E9AE43 /* Application */,
+				DA0A8844291E784100E9AE43 /* CoreObject */,
+				DA0A8837291E756F00E9AE43 /* Entities */,
+				DA0A883B291E75C500E9AE43 /* Utils */,
 			);
 			path = MyCreditManager;
+			sourceTree = "<group>";
+		};
+		DA0A8837291E756F00E9AE43 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				DA0A8838291E757F00E9AE43 /* Student.swift */,
+				DA0A8845291E796B00E9AE43 /* Subject.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		DA0A883A291E759900E9AE43 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DA0A8830291E750600E9AE43 /* main.swift */,
+				DA0A8840291E771200E9AE43 /* CreditManager.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DA0A883B291E75C500E9AE43 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DA0A883C291E75DD00E9AE43 /* InputValidator.swift */,
+				DA0A8847291E79E800E9AE43 /* Grade.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DA0A8844291E784100E9AE43 /* CoreObject */ = {
+			isa = PBXGroup;
+			children = (
+				DA0A883E291E769B00E9AE43 /* MenuReceiver.swift */,
+				DA0A8842291E783B00E9AE43 /* MenuHandler.swift */,
+			);
+			path = CoreObject;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,6 +174,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA0A8831291E750600E9AE43 /* main.swift in Sources */,
+				DA0A8843291E783B00E9AE43 /* MenuHandler.swift in Sources */,
+				DA0A8846291E796B00E9AE43 /* Subject.swift in Sources */,
+				DA0A883D291E75DD00E9AE43 /* InputValidator.swift in Sources */,
+				DA0A8839291E757F00E9AE43 /* Student.swift in Sources */,
+				DA0A883F291E769B00E9AE43 /* MenuReceiver.swift in Sources */,
+				DA0A8848291E79E800E9AE43 /* Grade.swift in Sources */,
+				DA0A8841291E771200E9AE43 /* CreditManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
