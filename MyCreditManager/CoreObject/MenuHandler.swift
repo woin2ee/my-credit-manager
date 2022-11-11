@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct MenuHandler {
+final class MenuHandler {
+    
+    private var students: Set<Student> = []
     
     func execute(by menu: Menu?) {
         guard let menu = menu else { return printError() }
@@ -29,7 +31,19 @@ struct MenuHandler {
     }
     
     private func addStudent() {
+        print("추가할 학생의 이름을 입력해주세요.")
+        guard
+            let name = readLine(),
+            !name.isEmpty
+        else { return print("입력이 잘못되었습니다. 다시 확인해주세요.") }
         
+        let newStudent: Student = .init(name: name, subjects: [])
+        if students.contains(newStudent) {
+            print("\(name)은(는) 이미 존재하는 학생입니다. 추가하지 않습니다.")
+        } else {
+            students.insert(newStudent)
+            print("\(name) 학생을 추가했습니다.")
+        }
     }
     
     private func deleteStudent() {

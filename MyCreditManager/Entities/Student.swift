@@ -7,7 +7,16 @@
 
 import Foundation
 
-struct Student {
+struct Student: Hashable {
+    
     let name: String
     var subjects: Set<Subject>
+    
+    static func ==(left: Student, right: Student) -> Bool {
+        left.name == right.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
 }
