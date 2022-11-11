@@ -74,7 +74,26 @@ final class MenuHandler {
     }
     
     private func showTotalGrade() {
+        print("평점을 알고싶은 학생의 이름을 입력해주세요.")
+        guard let name = readLine(),
+              inputValidator.validateEmpty(forInput: name)
+        else { return }
         
+        guard let student = students.filter({ $0.name == name }).first else {
+            print("\(name) 학생을 찾지 못했습니다.")
+            return
+        }
+        
+        guard let average = student.average else {
+            print("\(name) 학생의 성적 데이터가 없습니다.")
+            return
+        }
+        
+        student.subjects.forEach { subject in
+            print("\(subject.title): \(subject.grade)")
+        }
+        
+        print("평점 : \(average.trimSimply)")
     }
     
     private func exit() {

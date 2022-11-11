@@ -18,6 +18,22 @@ enum Grade {
     case D
     case F
     
+    init?(grade: String) {
+        switch grade {
+        case "A+": self = .Aplus
+        case "A": self = .A
+        case "B+": self = .Bplus
+        case "B": self = .B
+        case "C+": self = .Cplus
+        case "C": self = .C
+        case "D+": self = .Dplus
+        case "D": self = .D
+        case "F": self = .F
+        default:
+            return nil
+        }
+    }
+    
     var score: Double {
         switch self {
         case .Aplus:
