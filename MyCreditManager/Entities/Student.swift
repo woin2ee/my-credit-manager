@@ -8,5 +8,6 @@
 import Foundation
 
 struct Student {
-    
+    let name: String
+    var subjects: Set<Subject>
 }
