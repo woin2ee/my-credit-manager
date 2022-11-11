@@ -9,9 +9,19 @@ import Foundation
 
 struct CreditManager {
     
-    static let shared: CreditManager = .init()
+    private let menuReceiver: MenuReceiver
+    private let menuHandler: MenuHandler
+    
+    init(menuReceiver: MenuReceiver, menuHandler: MenuHandler) {
+        self.menuReceiver = menuReceiver
+        self.menuHandler = menuHandler
+    }
     
     func start() {
-        
+        while(true) {
+            menuReceiver.printMenu()
+            let menu = menuReceiver.inputMenu()
+            menuHandler.execute(by: menu)
+        }
     }
 }

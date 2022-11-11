@@ -5,4 +5,5 @@
 //  Created by Jaewon Yun on 2022/11/11.
 //
 
-CreditManager.shared.start()
+let creditManager = CreditManager.init(menuReceiver: MenuReceiver(), menuHandler: MenuHandler())
+creditManager.start()
