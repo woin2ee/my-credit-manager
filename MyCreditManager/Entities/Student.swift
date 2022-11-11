@@ -10,7 +10,7 @@ import Foundation
 struct Student: Hashable {
     
     let name: String
-    var subjects: Set<Subject>
+    var subjects: Set<Subject> = []
     
     static func ==(left: Student, right: Student) -> Bool {
         left.name == right.name

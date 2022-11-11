@@ -42,7 +42,7 @@ final class MenuHandler {
               inputValidator.validateEmpty(forInput: name)
         else { return }
         
-        let newStudent: Student = .init(name: name, subjects: [])
+        let newStudent: Student = .init(name: name)
         if students.contains(newStudent) {
             print("\(name)은(는) 이미 존재하는 학생입니다. 추가하지 않습니다.")
         } else {
@@ -52,7 +52,17 @@ final class MenuHandler {
     }
     
     private func deleteStudent() {
+        print("삭제할 학생의 이름을 입력해주세요.")
+        guard let name = readLine(),
+              inputValidator.validateEmpty(forInput: name)
+        else { return }
         
+        if let removedStudent = students.filter({ $0.name == name }).first {
+            students.remove(removedStudent)
+            print("\(name) 학생을 삭제하였습니다.")
+        } else {
+            print("\(name) 학생을 찾지 못했습니다.")
+        }
     }
     
     private func updateGrade() {
