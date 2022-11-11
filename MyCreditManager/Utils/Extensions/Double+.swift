@@ -9,6 +9,6 @@ import Foundation
 
 extension Double {
     var trimSimply: String {
-        return String(format: "%.2f", self)
+        return String(format: "%.3g", self)
     }
 }
