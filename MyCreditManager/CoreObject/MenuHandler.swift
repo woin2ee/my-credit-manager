@@ -106,7 +106,7 @@ final class MenuHandler {
             return
         }
         
-        student.subjects.forEach { subject in
+        student.subjects.sorted(by: { $0.title < $1.title }).forEach { subject in
             print("\(subject.title): \(subject.grade)")
         }
         
