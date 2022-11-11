@@ -49,7 +49,8 @@ struct MenuHandler {
     }
     
     private func exit() {
-        
+        print("프로그램을 종료합니다...")
+        Darwin.exit(0)
     }
     
     private func printError() {
