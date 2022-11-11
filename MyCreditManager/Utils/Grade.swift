@@ -18,7 +18,7 @@ enum Grade {
     case D
     case F
     
-    init?(grade: String) {
+    init?(_ grade: String) {
         switch grade {
         case "A+": self = .Aplus
         case "A": self = .A

@@ -15,7 +15,7 @@ struct Student: Hashable {
     var average: Double? {
         if subjects.count == 0 { return nil }
         let totalScore = subjects
-            .compactMap { Grade.init(grade: $0.grade) }
+            .compactMap { Grade($0.grade) }
             .reduce(0.0) { $0 + $1.score }
         return totalScore / Double(subjects.count)
     }

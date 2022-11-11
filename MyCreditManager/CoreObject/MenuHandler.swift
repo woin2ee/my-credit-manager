@@ -66,7 +66,24 @@ final class MenuHandler {
     }
     
     private func updateGrade() {
+        print("성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.")
+        print("입력예) Mickey Swift A+")
+        print("만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.")
         
+        guard let input = readLine(),
+              inputValidator.validateEmpty(forInput: input)
+        else { return }
+        
+        guard let info = try? inputValidator.validateSubjectInfoForm(forInput: input).get() else { return }
+        
+        if var targetStudent = students.filter({ $0.name == info.name }).first {
+            let subject: Subject = .init(title: info.subjectTitle, grade: info.grade)
+            targetStudent.subjects.update(with: subject)
+            students.update(with: targetStudent)
+            print("\(info.name) 학생의 \(info.subjectTitle) 과목이 \(info.grade)로 추가(변경) 되었습니다.")
+        } else {
+            print("\(info.name) 학생을 찾지 못했습니다.")
+        }
     }
     
     private func deleteGrade() {
