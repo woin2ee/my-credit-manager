@@ -11,6 +11,12 @@ final class MenuHandler {
     
     private var students: Set<Student> = []
     
+    private let inputValidator: InputValidator
+    
+    init(inputValidator: InputValidator) {
+        self.inputValidator = inputValidator
+    }
+    
     func execute(by menu: Menu?) {
         guard let menu = menu else { return printError() }
         
@@ -32,10 +38,9 @@ final class MenuHandler {
     
     private func addStudent() {
         print("추가할 학생의 이름을 입력해주세요.")
-        guard
-            let name = readLine(),
-            !name.isEmpty
-        else { return print("입력이 잘못되었습니다. 다시 확인해주세요.") }
+        guard let name = readLine(),
+              inputValidator.validateEmpty(forInput: name)
+        else { return }
         
         let newStudent: Student = .init(name: name, subjects: [])
         if students.contains(newStudent) {
