@@ -7,41 +7,43 @@
 
 import Foundation
 
-enum ValidationError: Error {
-    case invalidInputForm
-}
-
 struct InputValidator {
     
-    func validateEmpty(forInput input: String) -> Bool {
-        if input.isEmpty {
-            print("입력이 잘못되었습니다. 다시 확인해주세요.")
-            return false
-        } else {
-            return true
+    enum ValidationError: Error {
+        case invalidInputForm(String = "입력이 잘못되었습니다. 다시 확인해주세요.")
+        
+        var message: String {
+            switch self {
+            case .invalidInputForm(let errorMessage):
+                return errorMessage
+            }
         }
     }
     
-    func validateUpdateGradeInputForm(forInput input: String) -> Result<(name: String, subjectTitle: String, grade: String), Error> {
+    func validateEmpty(forInput input: String) throws {
+        if input.isEmpty {
+            throw ValidationError.invalidInputForm()
+        }
+    }
+    
+    func validateUpdateGradeInputForm(forInput input: String) throws -> (name: String, subjectTitle: String, grade: String) {
         let inputs = input.components(separatedBy: " ")
         guard inputs.count == 3,
               Grade(inputs[2]) != nil
         else {
-            print("입력이 잘못되었습니다. 다시 확인해주세요.")
-            return .failure(ValidationError.invalidInputForm)
+            throw ValidationError.invalidInputForm()
         }
         
-        return .success((name: inputs[0], subjectTitle: inputs[1], grade: inputs[2]))
+        return (name: inputs[0], subjectTitle: inputs[1], grade: inputs[2])
     }
     
-    func validateDeleteGradeInputForm(forInput input: String) -> Result<(name: String, subjectTitle: String), Error> {
+    func validateDeleteGradeInputForm(forInput input: String) throws -> (name: String, subjectTitle: String) {
         let inputs = input.components(separatedBy: " ")
         guard inputs.count == 2
         else {
-            print("입력이 잘못되었습니다. 다시 확인해주세요.")
-            return .failure(ValidationError.invalidInputForm)
+            throw ValidationError.invalidInputForm()
         }
         
-        return .success((name: inputs[0], subjectTitle: inputs[1]))
+        return (name: inputs[0], subjectTitle: inputs[1])
     }
 }
