@@ -35,8 +35,13 @@ final class MenuHandler {
             exit()
         }
     }
+}
+
+// MARK: - Private Functions
+
+private extension MenuHandler {
     
-    private func addStudent() {
+    func addStudent() {
         print("추가할 학생의 이름을 입력해주세요.")
         guard let name = readLine() else { return }
         
@@ -55,7 +60,7 @@ final class MenuHandler {
         }
     }
     
-    private func deleteStudent() {
+    func deleteStudent() {
         print("삭제할 학생의 이름을 입력해주세요.")
         guard let name = readLine() else { return }
         
@@ -73,7 +78,7 @@ final class MenuHandler {
         }
     }
     
-    private func updateGrade() {
+    func updateGrade() {
         print("성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.")
         print("입력예) Mickey Swift A+")
         print("만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.")
@@ -97,7 +102,7 @@ final class MenuHandler {
         }
     }
     
-    private func deleteGrade() {
+    func deleteGrade() {
         print("성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.")
         print("입력예) Mickey Swift")
         
@@ -123,7 +128,7 @@ final class MenuHandler {
         }
     }
     
-    private func showTotalGrade() {
+    func showTotalGrade() {
         print("평점을 알고싶은 학생의 이름을 입력해주세요.")
         guard let name = readLine() else { return }
         
@@ -150,16 +155,16 @@ final class MenuHandler {
         print("평점 : \(average.trimSimply)")
     }
     
-    private func exit() {
+    func exit() {
         print("프로그램을 종료합니다...")
         Darwin.exit(0)
     }
     
-    private func printError() {
+    func printError() {
         print("뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요.")
     }
     
-    private func handleError(_ error: Error) {
+    func handleError(_ error: Error) {
         if let error = error as? InputValidator.ValidationError {
             print(error.message)
         }
